@@ -1,0 +1,53 @@
+# Hybrid Image Platform  
+### Open Story Data API & Blender Add-on for Hybrid Character Generation  
+**Author:** Juhapekka Ollikainen  
+**Reference:** *Hybrid Image of Multiple Fantastical Characters*, Proceedings, Paris France, 2022, p. 262–265  
+
+---
+
+## 1. Overview
+
+The **Hybrid Image Platform** is an open-source research and creative-coding project for generating hybrid fantastical characters from open story data.  
+It bridges creative writing, AI-assisted character generation, and 3D modelling.  
+
+This repository provides:  
+- an **Open Data API** specification for narrative and character data;  
+- a **Blender add-on skeleton** (`storychar_importer.py`) for 3D visualization and manipulation;  
+- documentation for developers and research collaborators.  
+
+The platform expands on the ideas presented in the paper *Hybrid Image of Multiple Fantastical Characters*, exploring how open public-domain story corpora can inspire new hybrid entities in games, comics, and digital art.  
+
+---
+
+## 2. Phase I – Open Data API (Concept and Specification)
+
+### 🎯 Goal  
+Provide an accessible REST API for retrieving and remixing open narrative data (e.g., mythological characters, motifs, and story fragments).  
+
+### 🔌 API Endpoints
+
+| Endpoint | Method | Description |
+|-----------|--------|-------------|
+| `/api/v1/characters` | GET | Returns a list of all available hybrid characters |
+| `/api/v1/characters/{id}` | GET | Returns data for a single hybrid character |
+| `/api/v1/generate` | POST | Generates a new hybrid character from text corpus inputs |
+| `/api/v1/corpus` | GET | Returns metadata about available story corpora (e.g., Kalevala, folk tales) |
+
+### 🧩 Data Model (JSON)
+
+```json
+{
+  "id": "suomuhauki_001",
+  "name": "Hybrid Suomuhauki",
+  "sources": ["Kalevala", "Finnish folklore"],
+  "traits": {
+    "human": "heroic figure",
+    "animal": "pike",
+    "spiritual": "lake spirit"
+  },
+  "description": "A merged entity combining human bravery and aquatic mysticism.",
+  "media": {
+    "image": "url_to_concept_art.png",
+    "3d_model": "url_to_blend_file.blend"
+  }
+}
