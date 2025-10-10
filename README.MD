@@ -171,3 +171,5 @@ All materials (text, code, and media) are released under Creative Commons BY 4.0
 
 Citation:
 Ollikainen, J. (2022). Hybrid Image of Multiple Fantastical Characters. Proceedings of the Conference on Creative Coding and Computational Creativity, Paris, France.
+
+
