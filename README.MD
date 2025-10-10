@@ -35,7 +35,8 @@ Provide an accessible REST API for retrieving and remixing open narrative data (
 
 ### 🧩 Data Model (JSON)
 
-```json
+
+json
 {
   "id": "suomuhauki_001",
   "name": "Hybrid Suomuhauki",
