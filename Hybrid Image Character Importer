@@ -1,0 +1,124 @@
+bl_info = {
+    "name": "Hybrid Image Character Importer",
+    "author": "Juhapekka Ollikainen",
+    "version": (0, 2),
+    "blender": (3, 0, 0),
+    "location": "View3D > Sidebar > StoryChar",
+    "description": "Imports and visualizes hybrid story characters from open data API (with offline test mode)",
+    "category": "Import-Export",
+}
+
+import bpy
+import requests
+import random
+
+# ------------------------------------------------------------------------
+#    Offline sample data (for testing without API)
+# ------------------------------------------------------------------------
+
+SAMPLE_CHARACTERS = [
+    {
+        "name": "Spirit-Pike Warrior",
+        "description": "A mythic hero merging human intellect and fish spirit strength.",
+    },
+    {
+        "name": "Iron Owl Shaman",
+        "description": "A hybrid of nocturnal wisdom and metallic resilience.",
+    },
+    {
+        "name": "Cloud Elk Guardian",
+        "description": "A sky-traveling protector blending natural grace with stormy energy.",
+    },
+    {
+        "name": "Lynx Oracle",
+        "description": "A seer whose hybrid essence merges feline stealth and human intuition.",
+    },
+]
+
+# ------------------------------------------------------------------------
+#    Operator: Fetch and Import Hybrid Character
+# ------------------------------------------------------------------------
+
+class HYBRID_OT_ImportCharacter(bpy.types.Operator):
+    """Fetch a hybrid character from the Hybrid Image API or use offline mode"""
+    bl_idname = "hybrid.import_character"
+    bl_label = "Import Hybrid Character"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    use_offline: bpy.props.BoolProperty(
+        name="Offline Mode",
+        description="Use local sample data instead of API request",
+        default=False,
+    )
+
+    def fetch_character(self):
+        """Try fetching from API, fallback to local sample"""
+        api_url = "https://api.hybridimage.org/v1/characters/random"
+        if self.use_offline:
+            return random.choice(SAMPLE_CHARACTERS)
+
+        try:
+            response = requests.get(api_url, timeout=5)
+            response.raise_for_status()
+            return response.json()
+        except Exception as e:
+            print(f"[HybridImage] API fetch failed: {e}")
+            return random.choice(SAMPLE_CHARACTERS)
+
+    def execute(self, context):
+        data = self.fetch_character()
+        name = data.get("name", "Hybrid_Character")
+        description = data.get("description", "No description available.")
+
+        # Create a simple placeholder mesh (UV sphere)
+        bpy.ops.mesh.primitive_uv_sphere_add()
+        obj = bpy.context.active_object
+        obj.name = name
+
+        # Store metadata
+        obj["description"] = description
+
+        self.report({'INFO'}, f"Imported character: {name}")
+        print(f"\n--- Hybrid Image Import ---\nName: {name}\nDescription: {description}\n")
+
+        return {'FINISHED'}
+
+
+# ------------------------------------------------------------------------
+#    UI Panel
+# ------------------------------------------------------------------------
+
+class HYBRID_PT_MainPanel(bpy.types.Panel):
+    bl_label = "Hybrid Image Platform"
+    bl_idname = "HYBRID_PT_main_panel"
+    bl_space_type = 'VIEW_3D'
+    bl_region_type = 'UI'
+    bl_category = 'StoryChar'
+
+    def draw(self, context):
+        layout = self.layout
+        layout.label(text="Hybrid Image Character Importer")
+        layout.operator("hybrid.import_character", icon='OUTLINER_OB_MESH')
+
+
+# ------------------------------------------------------------------------
+#    Registration
+# ------------------------------------------------------------------------
+
+classes = (
+    HYBRID_OT_ImportCharacter,
+    HYBRID_PT_MainPanel,
+)
+
+def register():
+    for cls in classes:
+        bpy.utils.register_class(cls)
+    print("Hybrid Image Character Importer registered.")
+
+def unregister():
+    for cls in reversed(classes):
+        bpy.utils.unregister_class(cls)
+    print("Hybrid Image Character Importer unregistered.")
+
+if __name__ == "__main__":
+    register()
