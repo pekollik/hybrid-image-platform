@@ -125,7 +125,7 @@ The **StoryChar Importer** connects Blender to the Hybrid Image API and can oper
 |-------|--------|----------|
 | **I** | Open API for hybrid character data | Developers, librarians, data curators |
 | **II** | Blender integration and visualization | Game artists, creative coders |
-| **III** | AI-assisted narrative generation | Researchers, storytellers |
+
 
 ---
 
@@ -135,12 +135,6 @@ The **StoryChar Importer** connects Blender to the Hybrid Image API and can oper
 - Lehman, J., Risi, S., & Clune, J. (2016). *Creative generation of 3D objects with deep learning and innovation engines.* ICCC.  
 - Boden, M. (2004). *The Creative Mind: Myths and Mechanisms.* Routledge.
 
----
-
-## 📜 License
-
-**Code:** MIT License  
-**Documentation & Story Data:** Creative Commons Attribution 4.0 International (CC BY 4.0)
 
 ---
 
@@ -149,8 +143,6 @@ The **StoryChar Importer** connects Blender to the Hybrid Image API and can oper
 **Keywords:** creative coding, computational creativity, creative writing, Python, Blender, hybrid characters
 
 
----
 
-*Hybrid Image Platform © 2025 — Research-driven collaboration between open-source developers and digital creatives.*
 
 
