@@ -2,12 +2,14 @@
 
 ## Overview
 
-This repository documents the **Hybrid Image Platform**, a two-phase research and development initiative based on the paper *Hybrid Image of Multiple Fantastical Characters* (Juhapekka Ollikainen, 2022, International Conference on Computational Creativity, Paris).
+This repository documents the **Hybrid Image Platform**, (HIP) a two-phase research and development initiative based on the paper *Hybrid Image of Multiple Fantastical Characters* (Juhapekka Ollikainen, 2022, International Conference on Computational Creativity, Paris).
 
 The project combines artistic research and technical prototyping to explore new ways of generating hybrid story characters from open public-domain materials. It bridges cultural archives and computational creativity, producing:
 
 1. An **Open Data API** for story and character data.
 2. A **Blender Add-on** for 3D visualization and prototyping.
+
+HIP follws A Java MVC framework is a software framework  Model-View-Controller design pattern, where the Model (Open Data API)), the View (), and the Controller (StoryChar Importer). 
 
 ---
 
