@@ -9,7 +9,7 @@ The project combines artistic research and technical prototyping to explore new 
 1. An **Open Data API** for story and character data.
 2. A **Blender Add-on** for 3D visualization and prototyping.
 
-HIP follws A Java MVC framework is a software framework  Model-View-Controller design pattern, where the Model (Open Data API)), the View (), and the Controller (StoryChar Importer). 
+HIP follws A Java MVC framework is a software framework  Model-View-Controller design pattern, where the Model (Open Data API)), the View (Blender Add-on), and the Controller (StoryChar Importer). 
 
 ---
 
